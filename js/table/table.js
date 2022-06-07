@@ -1,6 +1,7 @@
 var inputIcons = document.querySelectorAll(".input-icon")
 var counter = document.querySelector(".counter span")
 var funtionCol = document.querySelectorAll('.funtion-content')
+    //something to change
 
 counter.innerText = document.querySelector(".table-section table").rows.length - 1
 inputIcons.forEach(inputIcon => {
