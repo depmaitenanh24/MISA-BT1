@@ -1,0 +1,171 @@
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.table-header p {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.addBtn {
+    background: #019160;
+    color: #fff;
+    padding: 0 16px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.addBtn:hover {
+    background: #2fbe8e;
+}
+
+.addBtn:active {
+    background: #01b075;
+}
+
+.table-section {
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    overflow-x: scroll;
+    min-height: 500px;
+}
+
+
+/* Thanh công cụ */
+
+.tool {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.search-input {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -316px -148px;
+    width: 17px;
+    height: 16px;
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 35px;
+    cursor: pointer;
+}
+
+.tool input {
+    height: 25px;
+    padding: 0 25px 0 8px;
+    width: 20%;
+    min-width: 150px;
+    font-size: 11px;
+    margin-right: 5px;
+    border: 1px solid #bbb;
+    outline: none;
+    border-radius: 4px;
+}
+
+.tool input:hover {
+    border: 1px solid #019160;
+}
+
+.refresh {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -493px -31px;
+    width: 22px;
+    height: 24px;
+    cursor: pointer;
+}
+
+
+/* Bảng */
+
+.table table {
+    width: 100%;
+    background: #fff;
+    margin-top: 5px;
+    font-size: 9px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #bbb;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #e9ebee;
+}
+
+tr {
+    height: 25px;
+}
+
+tbody tr:hover {
+    background: #f4f4f4;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 0px 5px;
+}
+
+
+/* Cột chức năng */
+
+td.funtion p {
+    color: dodgerblue;
+    font-weight: 600;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.funtion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.funtion-content div {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -900px -365px;
+    width: 8px;
+    height: 5px;
+    margin-left: 5px;
+    transition: 0.25s ease;
+    cursor: pointer;
+}
+
+.funtion-content ul {
+    position: absolute;
+    width: 100px;
+    top: 15px;
+    right: 0;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.25s ease;
+    font-size: 8px;
+    border: 1px solid #bbb;
+}
+
+.funtion-content ul li {
+    display: block;
+    width: 100%;
+    height: 20px;
+    list-style: none;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+}
+
+.funtion-content ul li:hover {
+    background: #e9ebee;
+    color: #01b075;
+}

@@ -1,0 +1,91 @@
+.table-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-footer .counter {
+    display: flex;
+    font-size: 11px;
+    align-items: center;
+}
+
+.table-pages {
+    display: flex;
+    font-size: 9px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.table-pages div {
+    margin-right: 4px;
+}
+
+.table-pages .input-section {
+    display: flex;
+    width: 120px;
+    position: relative;
+}
+
+.table-pages .input-section input {
+    height: 20px;
+    padding: 0 21px 0 8px;
+    border-radius: 2px;
+    border: 1px solid #bbb;
+    font-size: 8px;
+    outline: none;
+    background: #fff;
+    width: 100%;
+}
+
+.table-pages .input-section .dropdown {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -1756px -317px;
+    width: 8px;
+    height: 5px;
+    position: absolute;
+    right: 5px;
+    bottom: calc(50% - 2.5px);
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.table-pages .input-section ul {
+    position: absolute;
+    width: 100%;
+    top: 20px;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.25s ease;
+    font-size: 8px;
+    transform: translateY(calc(-100% - 20px));
+}
+
+.table-pages .input-section ul li {
+    display: block;
+    width: 100%;
+    height: 40px;
+    list-style: none;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+}
+
+.table-pages .input-section ul li div {
+    margin-right: 16px;
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -1273px -363px;
+    width: 14px;
+    height: 11px;
+}
+
+.table-pages .input-section ul li:hover {
+    background: #e9ebee;
+}
+
+.table-pages .input-section ul li.chose {
+    background: #019160;
+    color: #fff;
+    cursor: auto;
+}

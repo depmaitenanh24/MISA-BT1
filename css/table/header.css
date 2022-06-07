@@ -1,0 +1,63 @@
+.name-section {
+    display: flex;
+    align-items: center;
+    min-width: 400px;
+}
+
+.detail-icon {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -847px -35px;
+    width: 16px;
+    height: 14px;
+    margin-right: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.name-section p {
+    font-size: 11px;
+    margin-right: 5px;
+}
+
+.name-dropdown {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -1129px -365px;
+    width: 14px;
+    height: 8px;
+    cursor: pointer;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    min-width: 270px;
+}
+
+.profile div {
+    cursor: pointer;
+}
+
+.profile-name {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.avatar {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -352px -894px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-dropdown {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -467px -414px;
+    width: 10px;
+    height: 5px;
+    margin-right: 15px;
+}
+
+.bell {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -257px -32px;
+    width: 22px;
+    height: 25px;
+    margin-right: 30px;
+}

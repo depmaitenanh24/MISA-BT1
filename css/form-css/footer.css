@@ -1,0 +1,39 @@
+.footer-container {
+    width: 100%;
+    padding: 20px 0 10px 0;
+    border-top: 1px solid #bbb;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-container button {
+    padding: 10px 16px;
+    border-radius: 4px;
+    outline: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.footer-container .cancel {
+    background: #fff;
+    border: 1px solid black;
+}
+
+.footer-container .cut {
+    border: 1px solid black;
+}
+
+.footer-container .submit {
+    border: none;
+    background: #019160;
+    color: #fff;
+}
+
+.footer-container button.submit:hover {
+    background: #2fbe8e;
+}
+
+.footer-container button.submit:active {
+    background: #01B075;
+}

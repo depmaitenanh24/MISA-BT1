@@ -1,0 +1,38 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    display: flex;
+    margin-top: 5px;
+}
+
+.title>p {
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.icons {
+    display: flex;
+}
+
+.icons .sprite {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.icons .sprite.help {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -89px -145px;
+    width: 22px;
+    height: 22px;
+}
+
+.icons .sprite.close {
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -147px -147px;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+}

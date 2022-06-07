@@ -1,0 +1,17 @@
+.input-sections {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.divide-section {
+    width: 48%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 2%;
+}
+
+.divide-section.special {
+    width: 100%;
+}
