@@ -1,7 +1,7 @@
 .checkbox-section {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 100%;
 }
 
@@ -31,6 +31,9 @@
     background: #eee;
     top: calc(50%-12.5px);
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .checkmark.round {
@@ -69,8 +72,6 @@
 }
 
 .checkmark.round:after {
-    top: calc(50% - 7px);
-    left: calc(50% - 7px);
     width: 14px;
     height: 14px;
     border-radius: 50%;
