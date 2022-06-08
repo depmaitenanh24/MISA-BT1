@@ -76,6 +76,10 @@
     border: 1px solid #019160!important;
 }
 
+.error {
+    border: 1px solid #ff4747!important;
+}
+
 
 /* dropdown */
 
