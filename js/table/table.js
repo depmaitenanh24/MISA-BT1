@@ -24,24 +24,34 @@ window.onload = async function() {
 async function callAPI() {
     await fetch('https://amis.manhnv.net/api/v1/Employees').then(res => res.json()).then(data => {
         for (let i = 0; i < data.length; i++) {
-            var dateOfBirth = data[i].DateOfBirth
-            if (dateOfBirth) {
-                dateOfBirth = formatDate(dateOfBirth.slice(0, 10))
-            }
-            var row = document.createElement('tr')
-            row.innerHTML = `<td style="text-align: center"><label class="checkbox-container">
+            var row = addRow(data[i])
+            tableBody.appendChild(row)
+                // Đếm số hàng
+            counter.innerText = document.querySelector(".table-section table").rows.length
+        };
+    })
+}
+
+//Truyền vào data trả về 1 row
+function addRow(data) {
+    var dateOfBirth = data.DateOfBirth
+    if (dateOfBirth) {
+        dateOfBirth = formatDate(dateOfBirth.slice(0, 10))
+    }
+    var row = document.createElement('tr')
+    row.innerHTML = `<td style="text-align: center"><label class="checkbox-container">
                         <input type="checkbox" name="checkbox">
                         <span class="checkmark"></span>
                         </label></td>
-                        <td>${data[i].EmployeeCode}</td>
-                        <td class = "name">${data[i].EmployeeName}</td>
+                        <td>${data.EmployeeCode}</td>
+                        <td class = "name">${data.EmployeeName}</td>
                         <td style="text-align: center;">${dateOfBirth}</td>
-                        <td>${data[i].IdentityNumber}</td>
-                        <td>${data[i].EmployeePosition}</td>
-                        <td>${data[i].DepartmentName}</td>
-                        <td>${data[i].BankAccountNumber}</td>
-                        <td>${data[i].BankName}</td>
-                        <td>${data[i].BankProvinceName}</td>
+                        <td>${data.IdentityNumber}</td>
+                        <td>${data.EmployeePosition}</td>
+                        <td>${data.DepartmentName}</td>
+                        <td>${data.BankAccountNumber}</td>
+                        <td>${data.BankName}</td>
+                        <td>${data.BankProvinceName}</td>
                         <td class="funtion" style="text-align: center;">
                             <div class="funtion-content">
                                 <p>Sửa</p>
@@ -49,46 +59,47 @@ async function callAPI() {
                                 <ul class="non-exist hide">
                                     <li class="delete">
                                         Xóa</li>
-                                    <li>
+                                    <li class ="duplicate">
                                         Nhân bản</li>
                                 </ul>
                             </div>
                         </td>`
-            tableBody.appendChild(row)
-        };
-        // Thêm dropdown cho cột chức năng
-        var funtionCol = document.querySelectorAll('.funtion-content')
-        funtionCol.forEach(item => {
-            var dropdownBtn = item.querySelector('.dropdown')
-            var dropdown = item.querySelector('ul')
-            dropdownBtn.addEventListener('click', function() {
-                dropdown.classList.toggle('non-exist')
-                dropdown.classList.toggle('hide')
-                this.classList.toggle('rotate')
-            })
-            var options = item.querySelectorAll('ul li')
-            options.forEach(option => {
-                option.addEventListener('click', function() {
-                    dropdown.classList.add('non-exist')
-                    dropdown.classList.add('hide')
-                    dropdownBtn.classList.remove("rotate")
-                })
-            })
-        })
 
-        // Xóa hàng
-
-        var deteleBtns = document.querySelectorAll('.funtion-content ul li.delete')
-        deteleBtns.forEach(deteleBtn => {
-            deteleBtn.addEventListener('click', function() {
-                deteleBtn.parentElement.closest('tr').remove()
-                counter.innerText = document.querySelector(".table-section table").rows.length - 1
-            })
-        })
-
-
-        counter.innerText = document.querySelector(".table-section table").rows.length - 1
+    // Thêm dropdown cho cột chức năng
+    var funtionCol = row.querySelector('.funtion-content')
+    var dropdownBtn = funtionCol.querySelector('.dropdown')
+    var dropdown = funtionCol.querySelector('ul')
+    dropdownBtn.addEventListener('click', function() {
+        dropdown.classList.toggle('non-exist')
+        dropdown.classList.toggle('hide')
+        this.classList.toggle('rotate')
     })
+    var options = funtionCol.querySelectorAll('ul li')
+    options.forEach(option => {
+        option.addEventListener('click', function() {
+            dropdown.classList.add('non-exist')
+            dropdown.classList.add('hide')
+            dropdownBtn.classList.remove("rotate")
+        })
+    })
+
+
+    // Xóa hàng
+
+    var deteleBtn = row.querySelector('.funtion-content ul li.delete')
+    deteleBtn.addEventListener('click', function() {
+            deteleBtn.parentElement.closest('tr').remove()
+            counter.innerText -= 1
+        })
+        //Nhân bản
+
+    var duplicateBtn = row.querySelector('.funtion-content ul li.duplicate')
+    duplicateBtn.addEventListener('click', function() {
+        var rowDup = addRow(data)
+        row = row.parentNode.insertBefore(rowDup, row)
+        counter.innerText = parseInt(counter.innerText) + 1
+    })
+    return row;
 }
 
 inputIcons.forEach(inputIcon => {
