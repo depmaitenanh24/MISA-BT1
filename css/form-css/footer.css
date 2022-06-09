@@ -7,15 +7,20 @@
     justify-content: space-between;
 }
 
-.footer-container button {
+.footer-container .right {
+    display: flex;
+}
+
+.footer-container button,
+.footer-container .close,
+.footer-container .submit {
     padding: 10px 16px;
     border-radius: 4px;
-    outline: none;
     font-weight: bold;
     cursor: pointer;
 }
 
-.footer-container .cancel {
+.footer-container .close {
     background: #fff;
     border: 1px solid black;
 }
@@ -28,12 +33,13 @@
     border: none;
     background: #019160;
     color: #fff;
+    margin-left: 20px;
 }
 
-.footer-container button.submit:hover {
+.footer-container .submit:hover {
     background: #2fbe8e;
 }
 
-.footer-container button.submit:active {
+.footer-container .submit:active {
     background: #01B075;
 }

@@ -1,15 +1,15 @@
-var inputIcons = document.querySelectorAll(".input-icon")
 var counter = document.querySelector(".counter span")
 var tableBody = document.querySelector('table tbody')
+var form = document.querySelector('.form')
+var addOrUpdate = 0;
 
 window.onload = async function() {
     await callAPI()
 
     // Filter with input
-
     var filter = document.querySelector('.tool input')
-    var tableRows = document.querySelectorAll('tbody tr')
     filter.addEventListener('input', function() {
+        var tableRows = document.querySelectorAll('tbody tr')
         tableRows.forEach(row => {
             if (row.querySelector('td.name').innerHTML.toLowerCase().search(filter.value.trim().toLowerCase()) === -1) {
                 row.classList.add('hide')
@@ -83,56 +83,139 @@ function addRow(data) {
         })
     })
 
-
     // Xóa hàng
-
     var deteleBtn = row.querySelector('.funtion-content ul li.delete')
     deteleBtn.addEventListener('click', function() {
             deteleBtn.parentElement.closest('tr').remove()
             counter.innerText -= 1
         })
         //Nhân bản
-
     var duplicateBtn = row.querySelector('.funtion-content ul li.duplicate')
     duplicateBtn.addEventListener('click', function() {
-        var rowDup = addRow(data)
-        row = row.parentNode.insertBefore(rowDup, row)
-        counter.innerText = parseInt(counter.innerText) + 1
+            var rowDup = addRow(data)
+            row = row.parentNode.insertBefore(rowDup, row)
+            counter.innerText = parseInt(counter.innerText) + 1
+        })
+        // Sửa thông tin
+    var updateBtn = row.querySelector('.funtion-content p')
+    updateBtn.addEventListener('click', function() {
+        var inputs = document.querySelectorAll('form input')
+        inputs.forEach(input => {
+            var name = input.getAttribute('name')
+            if (data[name] === "null")
+                input.value = ""
+            else
+                input.value = data[name]
+        })
+        form.classList.remove('hide')
+        addOrUpdate = row;
     })
     return row;
 }
 
-inputIcons.forEach(inputIcon => {
-    //khi bấm nút thả xuống
-    var dropdownBtn = inputIcon.querySelector('.dropdown')
-    var dropdown = inputIcon.querySelector('ul')
-    dropdownBtn.addEventListener('click', function() {
-            dropdown.classList.toggle('non-exist')
-            this.classList.toggle('rotate')
-        })
-        //khi chọn 1 option
-    var input = inputIcon.querySelector('input')
-    var options = inputIcon.querySelectorAll('ul li')
-    options.forEach(option => {
-            option.addEventListener('click', function() {
-                options.forEach(item => {
-                    item.classList.remove('chose')
-                })
-                option.classList.add('chose')
-                input.value = option.innerText
-                dropdown.classList.add('non-exist')
-                dropdownBtn.classList.remove("rotate")
-            })
-        })
-        //set width dựa trên số lượng li
-    dropdown.style.height = `${(options.length)*40}px`
+//Kiểm tra submit
+
+var mandaInputs = document.querySelectorAll('.input-section.mandatory');
+var isPopup = [] // Kiểm tra alert đã pop-up chưa
+var isSubmit = [] // kiểm tra có cho phép submit không
+for (let i = 0; i < mandaInputs.length; i++) {
+    isPopup[i] = true
+    isSubmit[i] = false
+}
+
+document.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        onSubmitClick()
+    }
 })
 
+//Khi bấm submit
+function onSubmitClick() {
+    mandaInputs.forEach((section, index) => {
+            var input = section.querySelector('input')
+            var err = section.querySelector('.errMsg')
+                // Không có input
+            if (!input.value) {
+                if (isPopup[index] === true) {
+                    isPopup[index] = false
+                    input.classList.add('error')
+                    err.classList.remove('hide')
+                    setTimeout(() => {
+                        isPopup[index] = true
+                        err.classList.add('hide')
+                    }, 3000)
+                }
+
+                isSubmit[index] = false
+            }
+            // Không có lỗi
+            else {
+                input.classList.remove('error')
+                isSubmit[index] = true
+            }
+        })
+        // Có lỗi thì dừng đoạn code
+    for (let i = 0; i < isSubmit.length; i++) {
+        if (isSubmit[i] === false) {
+            return false
+        }
+    }
+    // Thêm vào bảng
+    var values = document.querySelectorAll('form input')
+    var data = getData(values)
+    var row = addRow(data)
+    form.classList.add('hide')
+    if (addOrUpdate === 0) {
+        tableBody.insertBefore(row, tableBody.firstChild)
+    } else {
+        tableBody.insertBefore(row, addOrUpdate)
+        addOrUpdate.remove()
+    }
+
+    return false;
+}
+
+// Lấy data từ các input
+
+function getData(inputs) {
+    var data = {};
+    inputs.forEach(input => {
+        if (!input.value) {
+            data = {...data, [input.getAttribute('name')]: "null" }
+        } else {
+            data = {...data, [input.getAttribute('name')]: input.value }
+        }
+        // Sau khi lấy thì set lại = null
+        input.value = "";
+    })
+    return data;
+}
+
+// Bật/tắt form
+var addNew = document.querySelector('.table .addBtn')
+var values = document.querySelectorAll('form input')
+addNew.addEventListener('click', function() {
+    values.forEach(input => {
+        input.value = "";
+    })
+    addOrUpdate = 0;
+    form.classList.remove('hide')
+})
+
+var closeBtns = document.querySelectorAll('.close')
+closeBtns.forEach(closeBtn => {
+    closeBtn.addEventListener('click', function() {
+        form.classList.add('hide')
+    })
+})
+
+// Chuyển về dd/mm/yyyy
 function formatDate(input) {
+    if (input === "null")
+        return input;
     var datePart = input.match(/\d+/g),
-        year = datePart[0].substring(0), // get only two digits
+        year = datePart[0], // Lấy 4 số đầu
         month = datePart[1],
         day = datePart[2];
-
     return day + '/' + month + '/' + year;
 }

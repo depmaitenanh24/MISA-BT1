@@ -50,18 +50,6 @@ body {
     padding: 20px;
 }
 
-.hide {
-    display: none!important;
-}
-
-.disappear {
-    visibility: hidden!important;
-}
-
-.non-exist {
-    height: 0!important;
-}
-
 .rotate {
     transform: rotate(180deg);
 }

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title> Table </title>
     <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/form.css">
 </head>
 
 <body>
@@ -141,7 +143,157 @@
             </div>
         </div>
     </div>
+
+    <div class="form hide">
+        <form class="container">
+            <div class="header">
+                <div class="title">
+                    <p>Thông tin nhân viên</p>
+                    <label class="checkbox-container square">
+                        Là khách hàng
+                        <input type="radio" name="radio">
+                        <span class="checkmark square"></span>
+                    </label>
+                    <label class="checkbox-container square">
+                        Là nhà cung cấp
+                        <input type="radio" name="radio">
+                        <span class="checkmark square"></span>
+                    </label>
+                </div>
+                <div class="icons">
+                    <div class="sprite help"></div>
+                    <div class="sprite close"></div>
+                </div>
+            </div>
+            <div class="input-sections">
+                <div class="divide-section">
+                    <div class="input-section employee-id mandatory">
+                        <label for="employeeId">Mã <span>*</span></label>
+                        <input type="text" placeholder="Nhập gì đó..." id="employeeId" name="EmployeeCode" class="input">
+                        <div class="errMsg hide">Vui lòng nhập mã nhân viên</div>
+                    </div>
+                    <div class="input-section name mandatory">
+                        <label for="name">Tên <span>*</span></label>
+                        <input type="text" id="name" name="EmployeeName" class="input">
+                        <div class="errMsg hide">Vui lòng nhập tên</div>
+                    </div>
+                    <div class="input-section input-icon mandatory">
+                        <label for="group">Đơn vị <span>*</span></label>
+                        <input type="text" id="group" class="input" name="DepartmentName" disabled>
+                        <div class="dropdown">
+                            <div class="dropdown-icon"></div>
+                        </div>
+                        <ul class="non-exist">
+                            <li>
+                                <div class="check-icon disappear"></div>Phòng nhân sự</li>
+                            <li>
+                                <div class="check-icon disappear"></div>Ban quản lý</li>
+                            <li>
+                                <div class="check-icon disappear"></div>Ban chuyên môn</li>
+                            <li>
+                                <div class="check-icon disappear"></div>Phòng truyền thông</li>
+                        </ul>
+                        <div class="errMsg hide">Vui lòng chọn đơn vị</div>
+                    </div>
+                    <div class="input-section">
+                        <label for="career">Chức danh</label>
+                        <input type="text" id="career" name="EmployeePosition" class="input">
+                    </div>
+                </div>
+                <div class="divide-section">
+                    <div class="input-section dob">
+                        <label for="dob">Ngày sinh</label>
+                        <input type="text" placeholder="DD/MM/YYYY" id="dob" name="DateOfBirth" class="input" onfocus="(this.type = 'date')">
+                    </div>
+                    <div class="input-section gender">
+                        <label for="gender">Giới tính</label>
+                        <div class="checkbox-section">
+                            <label class="checkbox-container round">
+                                Nam
+                                <input type="radio" name="radio">
+                                <span class="checkmark round"></span>
+                            </label>
+                            <label class="checkbox-container round">
+                                Nữ
+                                <input type="radio" name="radio">
+                                <span class="checkmark round"></span>
+                            </label>
+                            <label class="checkbox-container round">
+                                Khác
+                                <input type="radio" name="radio">
+                                <span class="checkmark round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-section id">
+                        <label for="id">Số CMND</label>
+                        <input type="text" id="id" name="IdentityNumber" class="input">
+                    </div>
+                    <div class="input-section id-date">
+                        <label for="career">Ngày cấp</label>
+                        <input type="text" placeholder="DD/MM/YYYY" id="idDate" name="IdentityDate" class="input" onfocus="(this.type = 'date')">
+                    </div>
+                    <div class="input-section id-place">
+                        <label for="idPlace">Nơi cấp</label>
+                        <input type="text" id="idPlace" name="IdentityPlace" class="input">
+                    </div>
+                </div>
+                <div class="divide-section special">
+                    <div class="input-section address">
+                        <label for="address">Địa chỉ</label>
+                        <input type="text" id="address" name="Address" class="input">
+                    </div>
+                    <div class="input-section general">
+                        <label for="phoneNumber">ĐT di động</label>
+                        <input type="text" id="phoneNumber" name="PhoneNumber" class="input">
+                    </div>
+                    <div class="input-section general">
+                        <label for="homeNumber">ĐT cố định</label>
+                        <input type="text" id="homeNumber" name="TelephoneNumber" class="input">
+                    </div>
+                    <div class="input-section general">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="Email" class="input">
+                    </div>
+                    <div class="input-section general">
+                        <label for="bankAccount">Tài khoản ngân hàng</label>
+                        <input type="text" id="bankAccount" name="BankAccountNumber" class="input">
+                    </div>
+                    <div class="input-section general">
+                        <label for="bankName">Tên ngân hàng</label>
+                        <input type="text" id="bankName" name="BankName" class="input">
+                    </div>
+                    <div class="input-section general">
+                        <label for="bankBranch">Chi nhánh</label>
+                        <input type="text" id="bankBranch" name="BankProvinceName" class="input">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-container">
+                <button class="close">Hủy</button>
+                <div class="right">
+                    <button class="cut" type="reset">Xóa</button>
+                    <div class="submit" onclick="return onSubmitClick()">Cắt và Thêm</div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="alert hide">
+        <div class="container">
+            <div class="modal-body">
+                <div class="warning-icon"></div>
+                <p>Mã nhân viên &lt;<span>NV-0001</span>&gt; đã tồn tại trong hệ thống, vui lòng kiểm tra lại</p>
+            </div>
+            <div class="footer">
+                <button>Đồng ý</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/form/clickEvents.js"></script>
+    <script type="text/javascript" src="../js/form/handleSubmit.js"></script>
     <script type="text/javascript" src="../js/table/table.js"></script>
+    <script type="text/javascript" src="../js/table/combobox.js"></script>
+    <script type="text/javascript" src="../js/table/other.js"></script>
 </body>
 
 </html>

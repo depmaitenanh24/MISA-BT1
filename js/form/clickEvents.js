@@ -1,4 +1,4 @@
-var inputIcons = document.querySelectorAll(".input-icon")
+var inputIcons = document.querySelectorAll("form .input-icon")
 var mandaInputs = document.querySelectorAll('.input-section.mandatory');
 
 inputIcons.forEach(inputIcon => {

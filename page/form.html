@@ -33,17 +33,17 @@
             <div class="divide-section">
                 <div class="input-section employee-id mandatory">
                     <label for="employeeId">Mã <span>*</span></label>
-                    <input type="text" placeholder="Nhập gì đó..." id="employeeId" class="input">
+                    <input type="text" placeholder="Nhập gì đó..." id="employeeId" name="EmployeeId" class="input">
                     <div class="errMsg hide">Vui lòng nhập mã nhân viên</div>
                 </div>
                 <div class="input-section name mandatory">
                     <label for="name">Tên <span>*</span></label>
-                    <input type="text" id="name" class="input">
+                    <input type="text" id="name" name="EmployeeName" class="input">
                     <div class="errMsg hide">Vui lòng nhập tên</div>
                 </div>
                 <div class="input-section input-icon mandatory">
                     <label for="group">Đơn vị <span>*</span></label>
-                    <input type="text" id="group" class="input" disabled>
+                    <input type="text" id="group" class="input" name="DepartmentName" disabled>
                     <div class="dropdown">
                         <div class="dropdown-icon"></div>
                     </div>
@@ -61,13 +61,13 @@
                 </div>
                 <div class="input-section">
                     <label for="career">Chức danh</label>
-                    <input type="text" id="career" class="input">
+                    <input type="text" id="career" name="EmployeePosition" class="input">
                 </div>
             </div>
             <div class="divide-section">
                 <div class="input-section dob">
                     <label for="dob">Ngày sinh</label>
-                    <input type="date" placeholder="Nhập gì đó..." id="dob" class="input">
+                    <input type="text" placeholder="DD/MM/YYYY" id="dob" name="DateOfBirth" class="input" onfocus="(this.type = 'date')">
                 </div>
                 <div class="input-section gender">
                     <label for="gender">Giới tính</label>
@@ -91,45 +91,45 @@
                 </div>
                 <div class="input-section id">
                     <label for="id">Số CMND</label>
-                    <input type="text" id="id" class="input">
+                    <input type="text" id="id" name="IdentityNumber" class="input">
                 </div>
                 <div class="input-section id-date">
                     <label for="career">Ngày cấp</label>
-                    <input type="date" id="idDate" class="input">
+                    <input type="text" placeholder="DD/MM/YYYY" id="idDate" name="IdentityDate" class="input" onfocus="(this.type = 'date')">
                 </div>
                 <div class="input-section id-place">
                     <label for="idPlace">Nơi cấp</label>
-                    <input type="text" id="idPlace" class="input">
+                    <input type="text" id="idPlace" name="IdentityPlace" class="input">
                 </div>
             </div>
             <div class="divide-section special">
                 <div class="input-section address">
                     <label for="address">Địa chỉ</label>
-                    <input type="text" id="address" class="input">
+                    <input type="text" id="address" name="Address" class="input">
                 </div>
                 <div class="input-section general">
                     <label for="phoneNumber">ĐT di động</label>
-                    <input type="text" id="phoneNumber" class="input">
+                    <input type="text" id="phoneNumber" name="PhoneNumber" class="input">
                 </div>
                 <div class="input-section general">
                     <label for="homeNumber">ĐT cố định</label>
-                    <input type="text" id="homeNumber" class="input">
+                    <input type="text" id="homeNumber" name="HomeNumber" class="input">
                 </div>
                 <div class="input-section general">
                     <label for="email">Email</label>
-                    <input type="text" id="email" class="input">
+                    <input type="text" id="email" name="Email" class="input">
                 </div>
                 <div class="input-section general">
                     <label for="bankAccount">Tài khoản ngân hàng</label>
-                    <input type="text" id="bankAccount" class="input">
+                    <input type="text" id="bankAccount" name="BankAccountNumber" class="input">
                 </div>
                 <div class="input-section general">
                     <label for="bankName">Tên ngân hàng</label>
-                    <input type="text" id="bankName" class="input">
+                    <input type="text" id="bankName" name="BankName" class="input">
                 </div>
                 <div class="input-section general">
                     <label for="bankBranch">Chi nhánh</label>
-                    <input type="text" id="bankBranch" class="input">
+                    <input type="text" id="bankBranch" name="BankBranchName" class="input">
                 </div>
             </div>
         </div>
