@@ -1,7 +1,6 @@
 .table-header {
     display: flex;
     justify-content: space-between;
-    height: 40px;
     margin-bottom: 10px;
 }
 
@@ -32,10 +31,11 @@
 
 .table-section {
     width: 100%;
+    height: calc(100% - 40px);
     background-color: #fff;
-    padding: 10px;
-    overflow-x: scroll;
-    min-height: 500px;
+    padding: 0px 10px;
+    overflow: auto;
+    position: relative;
 }
 
 
@@ -44,7 +44,11 @@
 .tool {
     display: flex;
     justify-content: flex-end;
-    position: relative;
+    position: sticky;
+    top: -0.5px;
+    background: #fff;
+    margin-top: 10px;
+    z-index: 1;
 }
 
 .search-input {
