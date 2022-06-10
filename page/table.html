@@ -144,7 +144,7 @@
         </div>
     </div>
 
-    <div class="form hide">
+    <div class="form hide closeable">
         <form class="container">
             <div class="header">
                 <div class="title">
@@ -203,7 +203,7 @@
                 <div class="divide-section">
                     <div class="input-section dob">
                         <label for="dob">Ngày sinh</label>
-                        <input type="text" placeholder="DD/MM/YYYY" id="dob" name="DateOfBirth" class="input" onfocus="(this.type = 'date')">
+                        <input type="text" placeholder="DD/MM/YYYY" id="dob" name="DateOfBirth" class="input" onfocus="(this.type = 'date')" onblur="(this.type = 'text')">
                     </div>
                     <div class="input-section gender">
                         <label for="gender">Giới tính</label>
@@ -231,7 +231,7 @@
                     </div>
                     <div class="input-section id-date">
                         <label for="career">Ngày cấp</label>
-                        <input type="text" placeholder="DD/MM/YYYY" id="idDate" name="IdentityDate" class="input" onfocus="(this.type = 'date')">
+                        <input type="text" placeholder="DD/MM/YYYY" id="idDate" name="IdentityDate" class="input" onfocus="(this.type = 'date')" onblur="(this.type = 'text')">
                     </div>
                     <div class="input-section id-place">
                         <label for="idPlace">Nơi cấp</label>
@@ -278,22 +278,22 @@
             </div>
         </form>
     </div>
-    <div class="alert hide">
-        <div class="container">
+    <div class="alert hide closeable">
+        <div class="modal-container">
             <div class="modal-body">
                 <div class="warning-icon"></div>
                 <p>Mã nhân viên &lt;<span>NV-0001</span>&gt; đã tồn tại trong hệ thống, vui lòng kiểm tra lại</p>
             </div>
             <div class="footer">
-                <button>Đồng ý</button>
+                <button class="close">Đồng ý</button>
             </div>
         </div>
     </div>
     <script type="text/javascript" src="../js/form/clickEvents.js"></script>
-    <script type="text/javascript" src="../js/form/handleSubmit.js"></script>
     <script type="text/javascript" src="../js/table/table.js"></script>
     <script type="text/javascript" src="../js/table/combobox.js"></script>
     <script type="text/javascript" src="../js/table/other.js"></script>
+    <script type="text/javascript" src="../js/modal/modal.js"></script>
 </body>
 
 </html>

@@ -23,10 +23,3 @@ options.forEach(option => {
     })
     //set width dựa trên số lượng li
 dropdown.style.height = `${(options.length)*20}px`
-
-
-// Refresh
-var refresh = document.querySelector('.tool .refresh')
-refresh.addEventListener('click', function() {
-    window.location.reload();
-})

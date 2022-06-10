@@ -164,12 +164,25 @@ function onSubmitClick() {
     var values = document.querySelectorAll('form input')
     var data = getData(values)
     var row = addRow(data)
-    form.classList.add('hide')
     if (addOrUpdate === 0) {
+        var isUnique = true
+        var tableRows1 = document.querySelectorAll('tbody tr')
+        tableRows1.forEach(tableRow => {
+            if (tableRow.children[1].innerText === data['EmployeeCode']) {
+                showModal(data['EmployeeCode'])
+                isUnique = false;
+            }
+        })
+        if (isUnique === false) {
+            return false;
+        }
         tableBody.insertBefore(row, tableBody.firstChild)
+        counter.innerText = parseInt(counter.innerText) + 1
+        form.classList.add('hide')
     } else {
         tableBody.insertBefore(row, addOrUpdate)
         addOrUpdate.remove()
+        form.classList.add('hide')
     }
 
     return false;
@@ -185,37 +198,6 @@ function getData(inputs) {
         } else {
             data = {...data, [input.getAttribute('name')]: input.value }
         }
-        // Sau khi lấy thì set lại = null
-        input.value = "";
     })
     return data;
-}
-
-// Bật/tắt form
-var addNew = document.querySelector('.table .addBtn')
-var values = document.querySelectorAll('form input')
-addNew.addEventListener('click', function() {
-    values.forEach(input => {
-        input.value = "";
-    })
-    addOrUpdate = 0;
-    form.classList.remove('hide')
-})
-
-var closeBtns = document.querySelectorAll('.close')
-closeBtns.forEach(closeBtn => {
-    closeBtn.addEventListener('click', function() {
-        form.classList.add('hide')
-    })
-})
-
-// Chuyển về dd/mm/yyyy
-function formatDate(input) {
-    if (input === "null")
-        return input;
-    var datePart = input.match(/\d+/g),
-        year = datePart[0], // Lấy 4 số đầu
-        month = datePart[1],
-        day = datePart[2];
-    return day + '/' + month + '/' + year;
 }
